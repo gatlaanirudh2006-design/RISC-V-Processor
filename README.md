@@ -183,22 +183,5 @@ Contributors
 1
 @gatlaanirudh2006-design
 gatlaanirudh2006-design gatlaanirudh2006
-Languages
-Verilog
-93.3%
- 
-Tcl
-6.7%
-Footer
-© 2026 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Community
-Docs
-Contact
-Manage cookies
-Do not share my personal information
+
  
