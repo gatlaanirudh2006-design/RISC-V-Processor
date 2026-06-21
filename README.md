@@ -1,4 +1,4 @@
-* Single Cycle RISC-V Processor *
+@ Single Cycle RISC-V Processor *
 
 This project presents the design and implementation of a **32-bit Single-Cycle RISC-V Processor** using **Verilog HDL**.
 
@@ -246,4 +246,4 @@ This project provided practical exposure to:
 **Anirudh Gatla**
 
 Electronics & Communication Engineering  
-Aspiring VLSI Verification Engineer
+Aspiring VLSI Engineer
