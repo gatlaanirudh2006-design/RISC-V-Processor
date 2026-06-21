@@ -1,4 +1,4 @@
-Single Cycle RISC-V Processor
+*** Single Cycle RISC-V Processor ***
 This project presents the design and implementation of a **32-bit Single-Cycle RISC-V Processor** using **Verilog HDL**.
 
 The processor is capable of executing instructions from the RISC-V instruction set architecture (ISA) by performing instruction fetch, decode, execution, memory access, and write-back operations within a single clock cycle.
