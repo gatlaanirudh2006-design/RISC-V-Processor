@@ -1,248 +1,55 @@
-#  Single Cycle RISC-V-Processor
-Design and Implementation of Single Cycle RISC-V Processor on Basys 3  FPGA
-RISC-V Single-Cycle Processor in Verilog
-Overview
-Skip to content
-gatlaanirudh2006-design
-RISC-V-Processor
-Repository navigation
-Code
-Issues
-Pull requests
-Agents
-Actions
-Projects
-Wiki
-Security and quality
-Insights
-Settings
-Owner avatar
-RISC-V-Processor
-Public
-gatlaanirudh2006-design/RISC-V-Processor
-Go to file
-t
-T
-Name		
-gatlaanirudh2006-design
-gatlaanirudh2006-design
-Enhance README with project details and module info
-2f2439f
- · 
-4 minutes ago
-README.md
-Enhance README with project details and module info
-4 minutes ago
-alu.v
-Add files via upload
-22 minutes ago
-alu_control.v
-Add files via upload
-22 minutes ago
-branch_unit.v
-Add files via upload
-22 minutes ago
-control_unit.v
-Add files via upload
-22 minutes ago
-data_memory.v
-Add files via upload
-22 minutes ago
-imm_gen.v
-Add files via upload
-22 minutes ago
-instruction_memory.v
-Add files via upload
-22 minutes ago
-pc.v
-Add files via upload
-22 minutes ago
-program.mem
-Add files via upload
-19 minutes ago
-register_file.v
-Add files via upload
-22 minutes ago
-riscv.xdc
-Add files via upload
-22 minutes ago
-tb_riscv.v
-Add files via upload
-22 minutes ago
-top_riscv.v
-Add files via upload
-22 minutes ago
-Repository files navigation
-README
-Single Cycle RISC-V-Processor
-RISC-V Single-Cycle Processor in Verilog
-Overview
+Single Cycle RISC-V Processor
+This project presents the design and implementation of a **32-bit Single-Cycle RISC-V Processor** using **Verilog HDL**.
 
-This project implements a 32-bit Single-Cycle RISC-V Processor using Verilog HDL. The processor is designed based on the open-source RISC-V Instruction Set Architecture (ISA) and is capable of fetching, decoding, executing, and writing back instructions in a single clock cycle.
+The processor is capable of executing instructions from the RISC-V instruction set architecture (ISA) by performing instruction fetch, decode, execution, memory access, and write-back operations within a single clock cycle.
 
-The design was simulated and verified using Verilog testbenches and can be implemented on FPGA platforms such as the Basys 3 board.
+The design was developed to gain a deeper understanding of processor architecture, RTL design methodologies, and FPGA-based implementation of modern computing systems.
 
-What is RISC-V?
+---
 
-RISC-V is an open-source Instruction Set Architecture (ISA) based on the Reduced Instruction Set Computer (RISC) philosophy.
+## What is RISC-V?
 
-Unlike proprietary ISAs, RISC-V is freely available and allows researchers, students, and companies to design custom processors without licensing fees.
+**RISC-V** is an open-standard Instruction Set Architecture (ISA) based on the principles of Reduced Instruction Set Computing (RISC).
 
-Key Features
-Open-source architecture
-Simple and modular instruction set
-Scalable from embedded systems to high-performance processors
-Widely used in academia and industry
-Supports custom instruction extensions
-Project Objective
+Unlike proprietary architectures, RISC-V is freely available and allows engineers, researchers, and organizations to design processors without licensing restrictions.
 
-The objective of this project is to design and implement a functional RISC-V processor capable of:
+Today, RISC-V has become one of the fastest-growing processor architectures in both academia and industry due to its simplicity, flexibility, and scalability.
 
-Fetching instructions from instruction memory
-Decoding instruction fields
-Generating control signals
-Performing arithmetic and logical operations
-Accessing data memory
-Updating the program counter
-Executing branch and jump instructions
-Writing results back to the register file
-Processor Architecture
+### Key Features
 
-The processor follows a Single-Cycle Datapath Architecture.
+- Open-source and royalty-free
+- Simple and modular architecture
+- Easy to learn and implement
+- Supports custom instruction extensions
+- Widely adopted for embedded and research applications
+- Industry-supported ecosystem
 
-In a single-cycle processor:
+---
 
-Every instruction completes in one clock cycle.
-Fetch, Decode, Execute, Memory Access, and Write Back occur within the same cycle.
-The design is simple and easy to understand.
-Suitable for learning processor architecture concepts.
-Supported Instructions
-R-Type Instructions
-ADD
-SUB
-AND
-OR
-XOR
-SLL
-SRL
-SRA
-SLT
-SLTU
-I-Type Instructions
-ADDI
-ANDI
-ORI
-XORI
-SLLI
-SRLI
-SRAI
-Memory Instructions
-LW
-SW
-Branch Instructions
-BEQ
-BNE
-BLT
-BGE
-Jump Instructions
-JAL
-JALR
-Upper Immediate Instructions
-LUI
-AUIPC
-Project Modules
-Program Counter (pc.v)
+## Project Objective
 
-Stores the address of the current instruction and updates it every clock cycle.
+The primary objective of this project is to design a functional RISC-V processor capable of:
 
-Functions
-Holds current PC value
-Supports reset operation
-Updates PC to next instruction address
-Instruction Memory (instruction_memory.v)
+- Fetching instructions from instruction memory
+- Decoding machine instructions
+- Generating appropriate control signals
+- Performing arithmetic and logical operations
+- Reading and writing data memory
+- Executing branch and jump instructions
+- Updating the program counter
+- Writing results back to registers
 
-Stores the machine code instructions.
+---
 
-Functions
-Reads instructions from program.mem
-Provides instruction corresponding to the current PC
-Supports instruction fetch stage
-Control Unit (control_unit.v)
+## Processor Architecture
 
-Generates control signals based on the instruction opcode.
+The processor follows a **Single-Cycle Datapath Architecture**.
 
-Control Signals
-RegWrite
-ALUSrc
-MemRead
-MemWrite
-MemToReg
-Branch
-Jump
-Jalr
-Lui
-Auipc
-Immediate Generator (imm_gen.v)
+In this architecture, each instruction completes all stages of execution within a single clock cycle.
 
-Extracts and sign-extends immediate values from instructions.
+### Execution Flow
 
-Supported Formats
-I-Type
-S-Type
-B-Type
-U-Type
-J-Type
-Register File (register_file.v)
-
-Contains 32 general-purpose registers.
-
-Features
-Two read ports
-One write port
-Register x0 permanently hardwired to zero
-ALU Control Unit (alu_control.v)
-
-Generates ALU operation codes based on:
-
-Opcode
-Funct3
-Funct7
-Arithmetic Logic Unit (alu.v)
-
-Performs arithmetic and logical operations.
-
-Supported Operations
-Addition
-Subtraction
-AND
-OR
-XOR
-Shift Left
-Shift Right
-Arithmetic Shift Right
-Set Less Than
-Branch Unit (branch_unit.v)
-
-Evaluates branch conditions and determines whether a branch should be taken.
-
-Data Memory (data_memory.v)
-
-Stores data used by load and store instructions.
-
-Functions
-Read data from memory
-Write data to memory
-Support LW and SW instructions
-Top Module (top_riscv.v)
-
-Integrates all processor modules into a complete RISC-V CPU.
-
-Additional Features
-Clock divider for FPGA implementation
-LED output display
-Switch-controlled output selection
-Reset support
-Design Flow
+```text
 Instruction Fetch
         ↓
 Instruction Decode
@@ -255,34 +62,110 @@ ALU Execution
         ↓
 Memory Access
         ↓
-Write Back
-Simulation
+Register Write Back
+```
 
-The processor functionality was verified using:
+---
 
-Verilog Testbench
-Functional Simulation
-Waveform Analysis
+## Supported Instructions
 
-Testbench File:
+### R-Type Instructions
 
-tb_riscv.v
-FPGA Implementation
+| Instruction | Description |
+|------------|-------------|
+| ADD | Addition |
+| SUB | Subtraction |
+| AND | Bitwise AND |
+| OR | Bitwise OR |
+| XOR | Bitwise XOR |
+| SLL | Shift Left Logical |
+| SRL | Shift Right Logical |
+| SRA | Shift Right Arithmetic |
+| SLT | Set Less Than |
+| SLTU | Set Less Than Unsigned |
 
-Target FPGA:
+### I-Type Instructions
 
-Basys 3 FPGA Board
+- ADDI
+- ANDI
+- ORI
+- XORI
+- SLLI
+- SRLI
+- SRAI
 
-Constraint File:
+### Memory Instructions
 
-riscv.xdc
+- LW (Load Word)
+- SW (Store Word)
 
-Features demonstrated on FPGA:
+### Branch Instructions
 
-Real-time processor execution
-LED output visualization
-Hardware verification
-File Structure
+- BEQ
+- BNE
+- BLT
+- BGE
+
+### Jump Instructions
+
+- JAL
+- JALR
+
+### Upper Immediate Instructions
+
+- LUI
+- AUIPC
+
+---
+
+## Design Modules
+
+### Program Counter (`pc.v`)
+
+Maintains the address of the instruction currently being executed and updates it during every clock cycle.
+
+### Instruction Memory (`instruction_memory.v`)
+
+Stores machine-code instructions and provides instruction fetch functionality.
+
+### Control Unit (`control_unit.v`)
+
+Decodes instructions and generates control signals required by the datapath.
+
+### Immediate Generator (`imm_gen.v`)
+
+Extracts and sign-extends immediate values from different RISC-V instruction formats.
+
+### Register File (`register_file.v`)
+
+Implements 32 general-purpose registers with dual-read and single-write capability.
+
+### ALU Control Unit (`alu_control.v`)
+
+Determines the operation to be performed by the ALU based on instruction fields.
+
+### Arithmetic Logic Unit (`alu.v`)
+
+Performs arithmetic, logical, comparison, and shift operations.
+
+### Branch Unit (`branch_unit.v`)
+
+Evaluates branch conditions and determines the next program counter value.
+
+### Data Memory (`data_memory.v`)
+
+Supports load and store operations required during program execution.
+
+### Top Module (`top_riscv.v`)
+
+Integrates all processor components into a complete RISC-V CPU.
+
+---
+
+## Project Directory
+
+```bash
+.
 ├── alu.v
 ├── alu_control.v
 ├── branch_unit.v
@@ -297,17 +180,69 @@ File Structure
 ├── riscv.xdc
 ├── program.mem
 └── README.md
-Future Enhancements
-Five-stage pipelined RISC-V processor
-Hazard detection unit
-Forwarding unit
-UART communication
-Cache memory integration
-Interrupt handling support
-Author
+```
 
-Anirudh Gatla
-Electronics and Communication Engineering (ECE)
+---
+
+## Simulation and Verification
+
+The processor was functionally verified using a dedicated Verilog testbench.
+
+Verification includes:
+
+- Instruction Fetch Validation
+- Register Read/Write Verification
+- ALU Functional Testing
+- Memory Read/Write Operations
+- Branch Instruction Testing
+- Complete Program Execution
+
+---
+
+## FPGA Implementation
+
+**Target Board:** Basys 3 FPGA
+
+The processor can be synthesized and deployed on FPGA hardware for real-time execution and verification.
+
+### Demonstrated Features
+
+- Real-time instruction execution
+- Hardware validation of datapath
+- FPGA-based processor implementation
+- Observation of processor outputs through onboard peripherals
+
+---
+
+## Learning Outcomes
+
+This project provided practical exposure to:
+
+- Computer Architecture
+- RISC-V ISA
+- RTL Design using Verilog HDL
+- Datapath and Control Unit Design
+- Functional Verification
+- FPGA Prototyping
+- Digital System Design
+
+---
+
+## Future Enhancements
+
+- Five-Stage Pipelined Architecture
+- Hazard Detection Unit
+- Forwarding Unit
+- UART Communication Interface
+- Cache Memory Integration
+- Interrupt Handling Mechanism
+- RV32IM Extension Support
+
+---
+
+## Author
+
+**Anirudh Gatla**
+
+Electronics & Communication Engineering  
 Aspiring VLSI Verification Engineer
-
- 
